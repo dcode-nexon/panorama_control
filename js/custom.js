@@ -1,13 +1,17 @@
 let timer = null;
 
 const frame = document.querySelector('#circle');
+const boxs = frame.querySelectorAll('article');
 const btnMode = document.querySelectorAll('.mode li');
 const info = document.querySelector('.status');
+const navi = document.querySelector('.navi');
+const btnNavi = navi.querySelectorAll('li');
 
 startRolling();
 
 btnMode[0].addEventListener('click', modePanorama);
 btnMode[1].addEventListener('click', modeControl);
+btnNavi.forEach((el, idx) => el.addEventListener('click', () => rotation(idx)));
 
 function startRolling() {
 	let deg = 0;
@@ -27,6 +31,7 @@ function modePanorama() {
 	btnMode[0].classList.add('on');
 	btnMode[1].classList.remove('on');
 	info.classList.add('on');
+	navi.classList.remove('on');
 
 	frame.style.transform = 'rotateY(0deg)';
 	setTimeout(() => {
@@ -41,8 +46,20 @@ function modeControl() {
 	btnMode[0].classList.remove('on');
 	btnMode[1].classList.add('on');
 	info.classList.remove('on');
+	navi.classList.add('on');
 	frame.style.transitionDuration = '0.5s';
 	frame.style.transform = 'rotateY(0deg)';
+	boxs[0].classList.add('on');
 
 	stopRolling();
+}
+
+function rotation(index) {
+	frame.style.transform = `rotateY(${45 * index}deg)`;
+	activation(index);
+}
+
+function activation(index) {
+	for (el of btnNavi) el.classList.remove('on');
+	btnNavi[index].classList.add('on');
 }

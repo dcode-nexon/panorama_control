@@ -1,4 +1,5 @@
 let timer = null;
+let rotateNum = 0;
 
 const frame = document.querySelector('#circle');
 const boxs = frame.querySelectorAll('article');
@@ -14,6 +15,8 @@ startRolling();
 btnMode[0].addEventListener('click', modePanorama);
 btnMode[1].addEventListener('click', modeControl);
 btnNavi.forEach((el, idx) => el.addEventListener('click', () => rotation(idx)));
+btnPrev.addEventListener('click', prev);
+btnNext.addEventListener('click', next);
 
 function startRolling() {
 	let deg = 0;
@@ -70,4 +73,14 @@ function rotation(index) {
 function activation(index) {
 	for (el of btnNavi) el.classList.remove('on');
 	btnNavi[index].classList.add('on');
+}
+
+function prev() {
+	let deg = 45 * --rotateNum;
+	frame.style.transform = `rotateY(${deg}deg)`;
+}
+
+function next() {
+	let deg = 45 * ++rotateNum;
+	frame.style.transform = `rotateY(${deg}deg)`;
 }

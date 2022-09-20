@@ -1,5 +1,6 @@
 let timer = null;
 let rotateNum = 0;
+let activeNum = 0;
 
 const frame = document.querySelector('#circle');
 const boxs = frame.querySelectorAll('article');
@@ -68,6 +69,9 @@ function modeControl() {
 function rotation(index) {
 	frame.style.transform = `rotateY(${45 * index}deg)`;
 	activation(index);
+
+	activeNum = index;
+	rotateNum = index;
 }
 
 function activation(index) {
@@ -78,9 +82,15 @@ function activation(index) {
 function prev() {
 	let deg = 45 * --rotateNum;
 	frame.style.transform = `rotateY(${deg}deg)`;
+
+	activeNum === 0 ? (activeNum = 7) : --activeNum;
+	activation(activeNum);
 }
 
 function next() {
 	let deg = 45 * ++rotateNum;
 	frame.style.transform = `rotateY(${deg}deg)`;
+
+	activeNum === 7 ? (activeNum = 0) : ++activeNum;
+	activation(activeNum);
 }

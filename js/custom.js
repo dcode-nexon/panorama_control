@@ -7,6 +7,7 @@ const info = document.querySelector('.status');
 const navi = document.querySelector('.navi');
 const btnNavi = navi.querySelectorAll('li');
 const btnPrev = document.querySelector('.prev');
+const btnNext = document.querySelector('.next');
 
 startRolling();
 
@@ -34,6 +35,7 @@ function modePanorama() {
 	info.classList.add('on');
 	navi.classList.remove('on');
 	btnPrev.classList.remove('on');
+	btnNext.classList.remove('on');
 
 	frame.style.transform = 'rotateY(0deg)';
 	setTimeout(() => {
@@ -50,6 +52,7 @@ function modeControl() {
 	info.classList.remove('on');
 	navi.classList.add('on');
 	btnPrev.classList.add('on');
+	btnNext.classList.add('on');
 
 	frame.style.transitionDuration = '0.5s';
 	frame.style.transform = 'rotateY(0deg)';

@@ -593,6 +593,83 @@ body {
   opacity: 1;
 }
 
+.next {
+  display: block;
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  right: -300px;
+  cursor: pointer;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.7), transparent);
+  z-index: 3;
+  transition: all 0.5s;
+  opacity: 0;
+}
+.next .inner {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  margin-top: -50px;
+  text-align: center;
+}
+.next .inner .top {
+  display: block;
+  width: 100px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  top: 115px;
+  right: 0px;
+  transform: rotate(-145deg);
+  transition: all 1s 0.5s;
+  opacity: 0;
+}
+.next .inner .bottom {
+  display: block;
+  width: 100px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  bottom: 114px;
+  left: 0px;
+  transform: rotate(145deg);
+  transition: all 1s 0.5s;
+  opacity: 0;
+}
+.next .inner span {
+  font: bold 20px/100px "orbitron";
+  color: #fff;
+  letter-spacing: 2px;
+  position: relative;
+  right: 60px;
+  text-shadow: 0px 0px 10px #fff;
+  opacity: 0;
+  transition: all 0.5s 1.5s;
+}
+.next.on {
+  opacity: 1;
+  right: 0;
+}
+.next.on .inner .top {
+  top: 15px;
+  transform: rotate(45deg);
+  box-shadow: 0px 0px 10px #fff;
+  opacity: 1;
+}
+.next.on .inner .bottom {
+  bottom: 14px;
+  transform: rotate(-45deg);
+  box-shadow: 0px 0px 10px #fff;
+  opacity: 1;
+}
+.next.on .inner span {
+  right: 40px;
+  opacity: 1;
+}
+
 @keyframes blink {
   0% {
     opacity: 0;

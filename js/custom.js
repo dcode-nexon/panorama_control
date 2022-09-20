@@ -49,7 +49,8 @@ function modeControl() {
 	navi.classList.add('on');
 	frame.style.transitionDuration = '0.5s';
 	frame.style.transform = 'rotateY(0deg)';
-	boxs[0].classList.add('on');
+	for (el of btnNavi) el.classList.remove('on');
+	btnNavi[0].classList.add('on');
 
 	stopRolling();
 }

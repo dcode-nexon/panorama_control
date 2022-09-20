@@ -91,7 +91,7 @@ body {
   opacity: 0;
   transition: 0.5s;
 }
-.wrap #circle article:hover h1 {
+.wrap #circle article:hover h1, .wrap #circle article.on h1 {
   top: -60px;
   opacity: 1;
 }

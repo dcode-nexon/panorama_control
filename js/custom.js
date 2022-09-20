@@ -40,6 +40,7 @@ function modePanorama() {
 	navi.classList.remove('on');
 	btnPrev.classList.remove('on');
 	btnNext.classList.remove('on');
+	boxs[0].classList.remove('on');
 
 	frame.style.transform = 'rotateY(0deg)';
 	setTimeout(() => {
@@ -62,6 +63,7 @@ function modeControl() {
 	frame.style.transform = 'rotateY(0deg)';
 	for (el of btnNavi) el.classList.remove('on');
 	btnNavi[0].classList.add('on');
+	boxs[0].classList.add('on');
 
 	stopRolling();
 }
@@ -75,8 +77,13 @@ function rotation(index) {
 }
 
 function activation(index) {
+	let boxNum = 0;
+	index === 0 ? (boxNum = 8) : (boxNum = index);
 	for (el of btnNavi) el.classList.remove('on');
 	btnNavi[index].classList.add('on');
+
+	for (el of boxs) el.classList.remove('on');
+	boxs[8 - boxNum].classList.add('on');
 }
 
 function prev() {

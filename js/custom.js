@@ -10,6 +10,8 @@ const navi = document.querySelector('.navi');
 const btnNavi = navi.querySelectorAll('li');
 const btnPrev = document.querySelector('.prev');
 const btnNext = document.querySelector('.next');
+const activeEl = [btnMode[0], info];
+const resetEl = [btnMode[1], navi, btnPrev, btnNext];
 
 startRolling();
 
@@ -34,15 +36,13 @@ function stopRolling() {
 
 function modePanorama() {
 	if (btnMode[0].classList.contains('on')) return;
-	btnMode[0].classList.add('on');
-	btnMode[1].classList.remove('on');
-	info.classList.add('on');
-	navi.classList.remove('on');
-	btnPrev.classList.remove('on');
-	btnNext.classList.remove('on');
+
+	for (el of activeEl) el.classList.add('on');
+	for (el of resetEl) el.classList.remove('on');
 	boxs[0].classList.remove('on');
 
 	frame.style.transform = 'rotateY(0deg)';
+
 	setTimeout(() => {
 		frame.style.transitionDuration = '0s';
 		startRolling();
@@ -51,16 +51,13 @@ function modePanorama() {
 
 function modeControl() {
 	if (btnMode[1].classList.contains('on')) return;
-	num = 0;
-	btnMode[0].classList.remove('on');
-	btnMode[1].classList.add('on');
-	info.classList.remove('on');
-	navi.classList.add('on');
-	btnPrev.classList.add('on');
-	btnNext.classList.add('on');
+
+	for (el of activeEl) el.classList.remove('on');
+	for (el of resetEl) el.classList.add('on');
 
 	frame.style.transitionDuration = '0.5s';
 	frame.style.transform = 'rotateY(0deg)';
+
 	for (el of btnNavi) el.classList.remove('on');
 	btnNavi[0].classList.add('on');
 	boxs[0].classList.add('on');
